@@ -7,12 +7,47 @@
 # export VERSION=<the-version-to-deploy>
 # envsubst < ./scripts/kubernetes/deploy.yaml | kubectl apply -f -
 #
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: video-streaming
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: video-streaming
+#   template:
+#     metadata:
+#       labels:
+#         app: video-streaming
+#     spec:
+#       containers: 
+#       - name: video-streaming
+#         image: $CONTAINER_REGISTRY/video-streaming:$VERSION
+#         imagePullPolicy: IfNotPresent
+#         env:
+#         - name: PORT
+#           value: "4000"
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: video-streaming
+# spec:
+#   selector:
+#     app: video-streaming
+#   type: LoadBalancer
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 4000
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: video-streaming
 spec:
-  replicas: 1
+  replicas: 10
   selector:
     matchLabels:
       app: video-streaming
@@ -21,9 +56,9 @@ spec:
       labels:
         app: video-streaming
     spec:
-      containers: 
+      containers:
       - name: video-streaming
-        image: $CONTAINER_REGISTRY/video-streaming:$VERSION
+        image: loliktrykps/video-streaming:v1
         imagePullPolicy: IfNotPresent
         env:
         - name: PORT
@@ -36,8 +71,9 @@ metadata:
 spec:
   selector:
     app: video-streaming
-  type: LoadBalancer
+  type: NodePort
   ports:
     - protocol: TCP
       port: 80
       targetPort: 4000
+      nodePort : 32128
