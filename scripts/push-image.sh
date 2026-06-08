@@ -16,11 +16,11 @@
 set -u # or set -o nounset
 # : "$CONTAINER_REGISTRY"
 # : "$VERSION"
-# : "$REGISTRY_UN"
-# : "$REGISTRY_PW"
+: "$REGISTRY_UN"
+: "$REGISTRY_PW"
 
-# echo $REGISTRY_PW | docker login $CONTAINER_REGISTRY --username $REGISTRY_UN --password-stdin
-docker login loliktrykps -u loliktrykps --password-stdin <<< "dckr_pat_k-VpicKCinyBRMnlfKOaHG4O600"
+echo $REGISTRY_PW | docker login $CONTAINER_REGISTRY --username $REGISTRY_UN --password-stdin
+# docker login loliktrykps -u loliktrykps --password-stdin <<< "dckr_pat_k-VpicKCinyBRMnlfKOaHG4O600"
 # docker push $CONTAINER_REGISTRY/video-streaming:$VERSION
 
 docker push loliktrykps/video-streaming:v2
