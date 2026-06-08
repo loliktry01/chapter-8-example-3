@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
       - name: video-streaming
-        image: loliktrykps/video-streaming:v1
+        image: loliktrykps/video-streaming:v2
         imagePullPolicy: IfNotPresent
         env:
         - name: PORT
