@@ -22,4 +22,5 @@ set -u # or set -o nounset
 # echo $REGISTRY_PW | docker login $CONTAINER_REGISTRY --username $REGISTRY_UN --password-stdin
 echo $REGISTRY_PW | docker login loliktrykps --username $REGISTRY_UN --password-stdin
 # docker push $CONTAINER_REGISTRY/video-streaming:$VERSION
+
 docker push loliktrykps/video-streaming:v2
