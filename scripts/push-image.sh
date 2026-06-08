@@ -20,7 +20,7 @@ set -u # or set -o nounset
 # : "$REGISTRY_PW"
 
 # echo $REGISTRY_PW | docker login $CONTAINER_REGISTRY --username $REGISTRY_UN --password-stdin
-docker login loliktrykps -u loliktrykps --password-stdin <<< "kliwonan@123"
+docker login loliktrykps -u loliktrykps --password-stdin <<< "dckr_pat_k-VpicKCinyBRMnlfKOaHG4O600"
 # docker push $CONTAINER_REGISTRY/video-streaming:$VERSION
 
 docker push loliktrykps/video-streaming:v2
